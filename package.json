@@ -1,0 +1,40 @@
+{
+  "name": "botname",
+  "version": "1.0.0",
+  "description": "Random name generator for your printer",
+  "main": "index.js",
+  "scripts": {
+    "start": "node bin/run.js",
+    "test": "mocha"
+  },
+  "bin": {
+    "botname": "node bin/run.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/makerbot/botname.git"
+  },
+  "keywords": [
+    "random",
+    "name",
+    "generator",
+    "printer",
+    "adjective"
+  ],
+  "author": "Greg Walden <greg.walden@makerbot.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/makerbot/botname/issues"
+  },
+  "homepage": "https://github.com/makerbot/botname#readme",
+  "dependencies": {
+    "adjective-adjective-animal": "^1.3.3",
+    "bluebird": "^2.9.33",
+    "colors": "^1.1.2",
+    "pascal-case": "^1.1.1"
+  },
+  "devDependencies": {
+    "chai": "^3.0.0",
+    "mocha": "^2.2.5"
+  }
+}
