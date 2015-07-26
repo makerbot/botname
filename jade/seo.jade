@@ -1,0 +1,29 @@
+- var seo = {};
+- seo.author = 'Greg Walden';
+- seo.title = 'BotName – Your Printer\'s Name Generator';
+- seo.description = 'Random name generator for your printer.';
+- seo.url = 'http://botname.makerbot.com';
+- seo.type = 'website';
+- seo.site = '@givemesnacks';
+- seo.creator = seo.site;
+- seo.image = seo.url + '/img/image.jpg';
+- seo.card = 'summary_large_image';
+
+//- HTML basics
+title=seo.title
+meta(name='author', content=seo.author)
+meta(name='description', content=seo.description)
+link(rel='canonical' href=seo.url)
+
+//- Common Items
+- each name in ['title', 'description', 'image']
+  meta(property='og:' + name, content=seo[name])
+  meta(name='twitter:' + name, content=seo[name])
+
+//- Open Graph Specifics
+- each name in ['url', 'type']
+  meta(property='og:' + name, content=seo[name])
+
+//- Twitter Card Specifics
+- each name in ['card', 'site', 'creator']
+  meta(name='twitter:' + name, content=seo[name])

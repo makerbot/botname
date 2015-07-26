@@ -1,0 +1,6 @@
+{
+  "name": "scaffold",
+  "devDependencies": {
+    "normalize.css": "~3.0.3"
+  }
+}
