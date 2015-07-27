@@ -3,6 +3,9 @@
 var botname = require('../');
 var colors = require('colors');
 
-botname().then(function(name) {
-  console.log('You could name your printer: ' + name.red);
-});
+var name = botname();
+var str = (process.argv[2] == '-n')
+  ? ''
+  : 'You could name your printer: '
+  ;
+console.log(str + name.red);

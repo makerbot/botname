@@ -6,6 +6,8 @@ Simply install the package globally `npm install -g botname` then type `botname`
 npm install -g botname
 botname
 # You could name your printer: CelebratoryBot
+botname -n
+# CelebratoryBot
 ```
 
 You can also include the package in your own app. First, `npm install --save botname`, then:
@@ -13,5 +15,5 @@ You can also include the package in your own app. First, `npm install --save bot
 ```js
 var botname = require('botname');
 
-botname().then(console.log); // Output: CelebratoryBot
+console.log(botname()); // Output: CelebratoryBot
 ```
