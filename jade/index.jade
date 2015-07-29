@@ -2,7 +2,18 @@ doctype html
 html(lang='en')
   include head.jade
   body
-    
-    
+
+    h1#botname
 
     include scripts.jade
+    script.
+      (function() {
+        var elem = document.getElementById('botname');
+
+        function generate() {
+          elem.innerHTML = botname();
+        }
+
+        generate();
+        elem.onclick = generate;
+      })();

@@ -1,6 +1,5 @@
 var gulp         = require('gulp')
-  , browserSync  = require('browser-sync')
-  , reload       = browserSync.reload
+  , browserSync  = require('browser-sync').create()
   , less         = require('gulp-less')
   , minifyCSS    = require('gulp-minify-css')
   , autoprefixer = require('gulp-autoprefixer')
@@ -10,11 +9,14 @@ var gulp         = require('gulp')
   , uglify       = require('gulp-uglify')
   , sourcemaps   = require('gulp-sourcemaps')
   , jshint       = require('gulp-jshint')
+  , browserify   = require('browserify')
+  , buffer       = require('vinyl-buffer')
+  , source       = require('vinyl-source-stream')
   ;
 
 // browser-sync task for starting the server.
 gulp.task('browser-sync', function() {
-  browserSync({
+  browserSync.init({
     server: {
       baseDir: './'
     }
@@ -28,33 +30,41 @@ gulp.task('less', function() {
     .pipe(autoprefixer())
     .pipe(minifyCSS())
     .pipe(gulp.dest('css/dist'))
-    .pipe(reload({ stream: true }))
+    .pipe(browserSync.stream())
+    .pipe(notify('Finished file: <%= file.relative %>'))
+  ;
+});
+
+gulp.task('browserify', function() {
+  var b = browserify('./index.js', {
+    standalone: 'botname',
+    debug: true
+  });
+
+  return b.bundle()
+    .pipe(source('botname.js'))
+    .pipe(buffer())
+    .pipe(sourcemaps.init({loadMaps: true}))
+    .pipe(uglify())
+    .pipe(sourcemaps.write('maps'))
+    .pipe(gulp.dest('./js/dist'))
+    .pipe(browserSync.stream())
     .pipe(notify('Finished file: <%= file.relative %>'))
   ;
 });
 
 gulp.task('js', function() {
-  var bundle = browserify('./index.js').bundle();
-
-  return bundle
-    .pipe(source('main.js'))
-    // .pipe(sourcemaps.init())
-    .pipe(streamify(uglify()))
-    // .pipe(sourcemaps.write('maps'))
+  return gulp.src('js/src/*.js')
+    .pipe(plumber())
+    .pipe(jshint())
+    .pipe(jshint.reporter('jshint-stylish'))
+    .pipe(sourcemaps.init())
+    .pipe(uglify())
+    .pipe(sourcemaps.write('maps'))
     .pipe(gulp.dest('js/dist'))
+    .pipe(browserSync.stream())
+    .pipe(notify('Finished file: <%= file.relative %>'))
   ;
-
-  // return gulp.src('js/src/*.js')
-  //   .pipe(plumber())
-  //   .pipe(jshint())
-  //   .pipe(jshint.reporter('jshint-stylish'))
-  //   .pipe(sourcemaps.init())
-  //   .pipe(uglify())
-  //   .pipe(sourcemaps.write('maps'))
-  //   .pipe(gulp.dest('js/dist'))
-  //   .pipe(reload({ stream: true }))
-  //   .pipe(notify('Finished file: <%= file.relative %>'))
-  // ;
 });
 
 gulp.task('jade', function() {
@@ -62,7 +72,7 @@ gulp.task('jade', function() {
     .pipe(plumber())
     .pipe(jade())
     .pipe(gulp.dest(''))
-    .pipe(reload({ stream: true }))
+    .pipe(browserSync.stream())
     .pipe(notify('Finished file: <%= file.relative %>'))
   ;
 });
@@ -72,7 +82,7 @@ gulp.task('bs-reload', function() {
 });
 
 // Default task to be run with `gulp`
-gulp.task('default', ['jade', 'less', 'browser-sync'], function() {
+gulp.task('default', ['jade', 'less', 'browserify', 'js', 'browser-sync'], function() {
   gulp.watch('css/src/*.less', ['less']);
   gulp.watch('jade/*.jade', ['jade']);
   gulp.watch('js/src/*.js', ['js']);

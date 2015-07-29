@@ -1,0 +1,10 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>BotName – Your Printer's Name Generator</title><meta name="author" content="Greg Walden"><meta name="description" content="Random name generator for your printer."><link rel="canonical" href="http://botname.makerbot.com"><meta property="og:title" content="BotName – Your Printer's Name Generator"><meta name="twitter:title" content="BotName – Your Printer's Name Generator"><meta property="og:description" content="Random name generator for your printer."><meta name="twitter:description" content="Random name generator for your printer."><meta property="og:image" content="http://botname.makerbot.com/img/image.jpg"><meta name="twitter:image" content="http://botname.makerbot.com/img/image.jpg"><meta property="og:url" content="http://botname.makerbot.com"><meta property="og:type" content="website"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@givemesnacks"><meta name="twitter:creator" content="@givemesnacks"><link href="css/dist/styles.css" rel="stylesheet"></head><body><h1 id="botname"></h1><script src="js/dist/botname.js"></script><script>(function() {
+  var elem = document.getElementById('botname');
+
+  function generate() {
+    elem.innerHTML = botname();
+  }
+
+  generate();
+  elem.onclick = generate;
+})();</script></body></html>
