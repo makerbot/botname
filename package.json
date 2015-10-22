@@ -42,7 +42,7 @@
     "chai": "^3.0.0",
     "glob": "^5.0.14",
     "gulp": "^3.9.0",
-    "gulp-autoprefixer": "^2.3.1",
+    "gulp-autoprefixer": "^3.1.0",
     "gulp-jade": "^1.0.1",
     "gulp-jshint": "^1.11.2",
     "gulp-less": "^3.0.3",
