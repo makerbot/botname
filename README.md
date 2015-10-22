@@ -1,3 +1,6 @@
+[![Build status](https://travis-ci.org/makerbot/botname.svg)](https://travis-ci.org/makerbot/botname)
+[![Dependencies](https://david-dm.org/makerbot/botname.svg)](https://david-dm.org/makerbot/botname)
+
 Very simple to use!
 
 Simply install the package globally `npm install -g botname` then type `botname` in the terminal.
