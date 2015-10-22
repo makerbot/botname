@@ -3,17 +3,35 @@ html(lang='en')
   include head.jade
   body
 
-    h1#botname
+    h3 You could name your printer…
+    div
+      h1
+        #botname
+        #extruder.extruder
+    h5#try Give me a name!
 
     include scripts.jade
     script.
       (function() {
         var elem = document.getElementById('botname');
+        var extruder = document.getElementById('extruder');
 
         function generate() {
+          elem.style.color = '#333';
           elem.innerHTML = botname();
+          extruder.style.opacity = 1;
+          extruder.style.left = elem.offsetWidth + 'px';
+
+          setTimeout(function() {
+            extruder.style.opacity = 0;
+            extruder.style.left = '0px';
+            elem.style.color = 'white';
+          }, 1000);
+
+          document.getElementById('try').innerHTML = 'Give me another!';
         }
 
-        generate();
+        //- generate();
         elem.onclick = generate;
+        document.getElementById('try').onclick = generate;
       })();

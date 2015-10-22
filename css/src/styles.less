@@ -1,2 +1,148 @@
 @import (less) '../../bower_components/normalize.css/normalize.css';
 
+body {
+  text-align: center;
+  font-size: 30px;
+  color: white;
+  background: black;
+}
+
+h1 {
+  display: inline-block;
+  font-size: 2.5em;
+  position: relative;
+}
+
+
+h5 {
+  display: inline-block;
+  padding: 10px 15px;
+  border: 1px white solid;
+  cursor: pointer;
+}
+
+.extruder {
+    position: absolute;
+    top: -80px;
+    left: 1px;
+    background-image: url('/img/extruder.svg');
+    background-size: 75px 150px;
+    width: 75px;
+    height: 150px;
+    opacity: 0;
+    transition: 1s left;
+}
+// ._burgerbot {
+//     box-sizing: content-box;
+//     height: 30px;
+//     overflow: hidden;
+//     padding-top: 4px;
+//     position: relative;
+//     top: -2px;
+//     width: 25px;
+
+//     ._sprite {
+//         .desktop();
+//         bottom: -10px;
+//         left: -26px;
+//         position: absolute;
+//     }
+//     ._burger_layer {
+//         background-color: #ccc;
+//         height: 3px;
+//         position: absolute;
+//         top: 5px;
+//         transform-origin: left;
+//         width: 25px;
+
+//         &:nth-of-type(3) {
+//             left: auto;
+//             top: 15px;
+//             transform-origin: right;
+//         }
+//         &:nth-of-type(4) {
+//             top: 25px;
+//         }
+//     }
+//     &._burger_play {
+//         * {
+//             animation-duration: 1s;
+//             animation-fill-mode: forwards;
+//             animation-timing-function: ease-in-out;
+//         }
+//         ._sprite {
+//             animation-name: extruder;
+//         }
+//         ._burger_layer {
+//             animation-name: layer_3;
+
+//             &:nth-of-type(3) {
+//                 animation-name: layer_2;
+//             }
+//             &:nth-of-type(4) {
+//                 animation-name: layer_1;
+//             }
+//         }
+//     }
+// }
+
+// @keyframes extruder {
+//     30% {
+//         transform: translate(32px, 0) scale(.5);
+//     }
+//     35% {
+//         transform: translate(32px, -10px) scale(.5);
+//     }
+//     65% {
+//         transform: translate(10px, -10px) scale(.5);
+//     }
+//     70% {
+//         transform: translate(10px, -20px) scale(.5);
+//     }
+//     100% {
+//         transform: translate(40px, -20px) scale(.5);
+//     }
+// }
+
+// @keyframes layer_1 {
+//     0% {
+//         transform: scalex(0);
+//     }
+//     30% {
+//         transform: scalex(1);
+//     }
+//     100% {
+//         transform: scalex(1);
+//     }
+// }
+
+// @keyframes layer_2 {
+//     0% {
+//         transform: scalex(0);
+//     }
+//     30% {
+//         transform: scalex(0);
+//     }
+//     65% {
+//         transform: scalex(1);
+//     }
+//     100% {
+//         transform: scalex(1);
+//     }
+// }
+
+// @keyframes layer_3 {
+//     0% {
+//         transform: scalex(0);
+//     }
+//     30% {
+//         transform: scalex(0);
+//     }
+//     65% {
+//         transform: scalex(0);
+//     }
+//     100% {
+//         transform: scalex(1);
+//     }
+// }
+
