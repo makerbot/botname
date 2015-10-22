@@ -1,4 +1,4 @@
-Very simple to use!!
+Very simple to use!
 
 Simply install the package globally `npm install -g botname` then type `botname` in the terminal.
 
